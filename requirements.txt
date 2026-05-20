@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+streamlit
+pandas
+numpy
+yfinance
+plotly
+google-generativeai
