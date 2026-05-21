@@ -6,3 +6,4 @@ numpy
 yfinance
 plotly
 google-generativeai
+matplotlib
