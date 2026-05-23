@@ -59,3 +59,30 @@ def generate_portfolio_analysis(portfolio_data):
     )
 
     return response.text
+
+def finance_chat(user_message):
+    prompt=f"""
+    You are an AI financial assistant.
+
+    Your job is to:
+    - Explain finance concepts simply
+    - Analyze stocks
+    - Explain RSI, MACD, trends
+    - Help beginner investors
+    - Compare companies
+    - Give educational insights
+
+    DO NOT give guaranteed financial advice.
+
+    User Question:
+    {user_message}
+
+    Give a clear beginner-friendly answer.
+    """
+
+    response = client.models.generate_content(
+        model="gemini-2.5-flash-lite",
+        contents=prompt
+    )
+
+    return response.text

@@ -94,6 +94,16 @@ def analyze_stock(symbol:str):
         "symbol":symbol,
         "latest_close":float(df["Close"].iloc[-1]),
         "signals":signal,
-        "data":df.tail(10).to_dict(orient="records")
+        "chart_data":{
+            "dates":[str(date) for date in df["Date"].tail(60)],
+
+            "close":[float(x) for x in df["Close"].tail(60)],
+
+            "rsi":[float(x) for x in df["RSI"].tail(60)],
+
+            "macd":[float(x) for x in df["MACD"].tail(60)],
+
+            "macd_signal":[float(x) for x in df["MACD_Signal"].tail(60)]
+        }
     }
     

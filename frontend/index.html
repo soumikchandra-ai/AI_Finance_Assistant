@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Financial Analyst</title>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
@@ -19,13 +19,57 @@
             <button onclick="analyzeStock()">
                 Analyze
             </button>
+            <button onclick="generateReport()">
+                Generate PDF Report
+            </button>
         </div>
 
         <div id="result"></div>
+        <div class="chart-container">
+
+            <canvas id="priceChart"></canvas>
+
+        </div>
+        <div id="loader" class="loader"></div>
+
+        <div class="chart-container">
+
+            <canvas id="rsiChart"></canvas>
+
+        </div>
+
+        <div class="chart-container">
+
+            <canvas id="macdChart"></canvas>
+
+        </div>
 
         <hr>
 
-        <h2>📊 Portfolio Analysis</h2>
+        <div class="chat-section">
+
+            <h2>AI Finance Chatbot</h2>
+
+            <div id="chatBox"></div>
+
+            <div class="chat-input">
+
+                <input
+                type="text"
+                id="chatInput"
+                placeholder="Ask finance questions...">
+
+                <button onclick="sendMessage()">
+                    Send
+                </button>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <h2>Portfolio Analysis</h2>
 
         <input type="text" id="portfolioStocks"
         placeholder="AAPL,MSFT,TSLA">

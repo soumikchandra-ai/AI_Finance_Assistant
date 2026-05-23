@@ -10,3 +10,4 @@ matplotlib
 ta
 jinja2
 dotenv
+reportlab
