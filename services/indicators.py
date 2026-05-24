@@ -4,11 +4,24 @@ import numpy as np
 import ta
 
 #To load the financial data
-def load_data(symbol:str,period:str="6mo"):
-    df=yf.download(symbol,period=period)
+def load_data(symbol: str, period: str = "6mo"):
+    df = yf.download(symbol, period=period)
+
+    # Flatten multi-index if any
     if isinstance(df.columns, pd.MultiIndex):
         df.columns = df.columns.droplevel(1)
-    df=df.reset_index()
+
+    # Reset index safely
+    df = df.reset_index()
+
+    # FORCE correct date column name
+    if "Date" in df.columns:
+        pass
+    elif "Datetime" in df.columns:
+        df.rename(columns={"Datetime": "Date"}, inplace=True)
+    else:
+        df.rename(columns={df.columns[0]: "Date"}, inplace=True)
+
     return df
 
 #To calculate the Simple Moving average
