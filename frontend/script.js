@@ -86,8 +86,8 @@ async function analyzeStock(){
             </p>
             <hr>
             <h3>AI Analysis</h3>
-            <p>${data.ai_analysis.replace(/\n/g,"<br>")}</p>
-        `;
+            <div class="ai-analysis">${typeof marked.parse === 'function' ? marked.parse(data.ai_analysis) : marked(data.ai_analysis)}</div>
+            `;
         document.getElementById("loader").style.display = "none";
     }
     
@@ -123,8 +123,7 @@ async function analyzePortfolio(){
         </p>
         <hr>
         <h3>AI Portfolio Analysis</h3>
-        <p>${data.ai_analysis.replace(/\n/g,"<br>")}</p>
-    `;
+        <div class="ai-analysis">${marked.parse(data.ai_analysis)}</div>`;
 }
 async function sendMessage(){
     const input =
@@ -164,7 +163,7 @@ async function sendMessage(){
         // BOT RESPONSE
         chatBox.innerHTML += `
             <div class="message bot-message">
-                ${data.response}
+                ${marked.parse(data.response)}
             </div>
         `;
         chatBox.scrollTop = chatBox.scrollHeight;
