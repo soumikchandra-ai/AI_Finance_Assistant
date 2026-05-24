@@ -1,4 +1,4 @@
-from fastapi import FastAPI,Query
+from fastapi import FastAPI,Query,HTTPException
 from services.stock_service import get_stock_info,get_historical_data
 from services.indicators import analyze_stock
 from fastapi.staticfiles import StaticFiles
@@ -65,11 +65,14 @@ def portfolio_analysis(symbols:list[str]=Query(...)):
     return analyze_portfolio(symbols)
 
 @app.post('/chat')
-def chat(request:ChatRequest):
-    response=finance_chat(request.message)
-    return{
-        "response":response
-    }
+def chat(request: ChatRequest):
+    try:
+        response = finance_chat(request.message)
+        return {"response": response}
+
+    except Exception as e:
+        print("ERROR:", e)
+        raise HTTPException(status_code=500, detail=str(e))
     
 @app.get('/generate-report/{symbol}')
 def create_report(symbol:str):

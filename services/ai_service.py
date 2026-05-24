@@ -9,29 +9,35 @@ api_key = os.getenv("GOOGLE_API_KEY")
 client = genai.Client(api_key=api_key)
 
 def generate_ai_analysis(stock_data):
-    prompt = f"""
-    You are an expert financial analyst.
+    try:
+        
+        prompt = f"""
+        You are an expert financial analyst.
 
-    Analyze the following stock data and provide:
+        Analyze the following stock data and provide:
 
-    1. Trend analysis
-    2. Risk analysis
-    3. Investment recommendation
-    4. Explanation of RSI and MACD
-    5. Short-term outlook
+        1. Trend analysis
+        2. Risk analysis
+        3. Investment recommendation
+        4. Explanation of RSI and MACD
+        5. Short-term outlook
 
-    Stock Data:
-    {stock_data}
+        Stock Data:
+        {stock_data}
 
-    Give beginner-friendly explanation.
-    """
+        Give beginner-friendly explanation.
+        """
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt
-    )
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt
+        )
 
-    return response.text
+        return response.text
+    except Exception as e:
+        print("Gemini error:", e)
+        return "Sorry, AI service is temporarily unavailable."
+        
 
 def generate_portfolio_analysis(portfolio_data):
 
@@ -81,7 +87,7 @@ def finance_chat(user_message):
     """
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash-lite",
+        model="gemini-2.5-flash",
         contents=prompt
     )
 
