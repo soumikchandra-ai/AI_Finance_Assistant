@@ -27,7 +27,7 @@ def generate_ai_analysis(stock_data):
     """
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash-lite",
+        model="gemini-2.5-flash",
         contents=prompt
     )
 
@@ -54,7 +54,7 @@ def generate_portfolio_analysis(portfolio_data):
     """
 
     response = client.models.generate_content(
-        model="gemini-2.5-flash-lite",
+        model="gemini-2.5-flash",
         contents=prompt
     )
 

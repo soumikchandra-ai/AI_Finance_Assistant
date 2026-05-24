@@ -97,7 +97,7 @@ Market Data  Technical   AI Layer
 | **Backend** | Python 3.10+, FastAPI, Uvicorn |
 | **Market Data** | yfinance, pandas, numpy |
 | **Indicators** | ta (Technical Analysis Library) |
-| **AI** | Google Gemini API (`gemini-2.5-flash-lite`) |
+| **AI** | Google Gemini API (`gemini-2.5-flash`) |
 | **Reporting** | ReportLab |
 
 ---

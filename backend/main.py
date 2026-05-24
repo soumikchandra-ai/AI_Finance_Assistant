@@ -8,8 +8,20 @@ from services.portfolio_service import analyze_portfolio
 from pydantic import BaseModel
 from services.ai_service import finance_chat
 from services.report_service import generate_pdf_report
+import os
+from fastapi.middleware.cors import CORSMiddleware
 
 app=FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+app.mount("/static", StaticFiles(directory="frontend"), name="static")
 
 class ChatRequest(BaseModel):
     

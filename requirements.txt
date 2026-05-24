@@ -1,13 +1,10 @@
 fastapi
 uvicorn
-streamlit
 pandas
 numpy
 yfinance
-plotly
-google-generativeai
-matplotlib
 ta
+python-dotenv
+google-generativeai
 jinja2
-dotenv
 reportlab
